@@ -19,11 +19,20 @@ What it shows:
 
 - **Realtime**: `vb.subscribe("todos", "*", …)` delivers creates, updates and deletes. The
   server checks each event against the same rules, so you only hear about your own todos.
-- **Typed client**: `src/vaultbase-schema.gen.ts` is generated from `schema.json` with
+- **Typed client**: `src/lib/vaultbase-schema.gen.ts` is generated from `schema.json` with
   `vb-types`, so `vb.collection("todos")` knows the record's fields.
 - **Batch**: "Clear done" deletes every finished todo in one atomic request.
 
-The whole app is [`src/main.ts`](./src/main.ts), plain TypeScript with no framework.
+It's a small React app. The Vaultbase parts are in three files:
+
+| File | What it does |
+|---|---|
+| [`src/lib/vaultbase.ts`](./src/lib/vaultbase.ts) | The client, and readable messages for its errors |
+| [`src/hooks/useSession.ts`](./src/hooks/useSession.ts) | The signed-in user, following the SDK's auth store across tabs |
+| [`src/hooks/useTodos.ts`](./src/hooks/useTodos.ts) | Loading the list, the realtime subscription, and every action |
+
+The components in [`src/components/`](./src/components) are plain React with no Vaultbase
+code, apart from the sign-in and sign-out calls.
 
 ## Run it
 

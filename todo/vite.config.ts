@@ -1,4 +1,5 @@
 import { defineConfig, type ProxyOptions } from "vite";
+import react from "@vitejs/plugin-react";
 
 declare const process: { env: Record<string, string | undefined> };
 
@@ -21,6 +22,7 @@ const proxy: ProxyOptions = {
 };
 
 export default defineConfig({
+  plugins: [react()],
   server: {
     proxy: {
       "/api": proxy,
