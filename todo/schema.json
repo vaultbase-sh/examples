@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-19T00:00:00.000Z",
+  "collections": [
+    {
+      "name": "users",
+      "type": "auth",
+      "fields": [
+        {
+          "name": "email",
+          "type": "email",
+          "required": true,
+          "implicit": true,
+          "options": {
+            "unique": true
+          }
+        },
+        {
+          "name": "verified",
+          "type": "bool",
+          "required": false,
+          "implicit": true
+        },
+        {
+          "name": "name",
+          "type": "text"
+        }
+      ],
+      "list_rule": "id = @request.auth.id",
+      "view_rule": "id = @request.auth.id",
+      "create_rule": null,
+      "update_rule": "id = @request.auth.id",
+      "delete_rule": "id = @request.auth.id"
+    },
+    {
+      "name": "todos",
+      "type": "base",
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "required": true,
+          "options": {
+            "max": 200
+          }
+        },
+        {
+          "name": "done",
+          "type": "bool"
+        },
+        {
+          "name": "owner",
+          "type": "relation",
+          "collection": "users",
+          "required": true
+        }
+      ],
+      "list_rule": "owner = @request.auth.id",
+      "view_rule": "owner = @request.auth.id",
+      "create_rule": "@request.auth.id != \"\" && @request.body.owner = @request.auth.id",
+      "update_rule": "owner = @request.auth.id && (@request.body.owner:isset = false || @request.body.owner = @request.auth.id)",
+      "delete_rule": "owner = @request.auth.id"
+    }
+  ]
+}

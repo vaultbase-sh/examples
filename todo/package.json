@@ -1,0 +1,22 @@
+{
+  "name": "vaultbase-example-todo",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A todo app on Vaultbase: sign-in, per-user rules, realtime sync across tabs.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "types": "vb-types --schema=./schema.json --out=./src/vaultbase-schema.gen.ts",
+    "schema": "vb-migrate apply --schema=./schema.json"
+  },
+  "dependencies": {
+    "@vaultbase/sdk": "^0.7.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vite": "^6.4.4"
+  }
+}
