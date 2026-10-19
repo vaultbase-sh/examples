@@ -1,0 +1,165 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-19T00:00:00.000Z",
+  "collections": [
+    {
+      "name": "users",
+      "type": "auth",
+      "fields": [
+        {
+          "name": "email",
+          "type": "email",
+          "required": true,
+          "implicit": true,
+          "options": {
+            "unique": true
+          }
+        },
+        {
+          "name": "verified",
+          "type": "bool",
+          "required": false,
+          "implicit": true
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "required": true,
+          "options": {
+            "min": 1,
+            "max": 60
+          }
+        }
+      ],
+      "list_rule": "id = @request.auth.id",
+      "view_rule": "id = @request.auth.id",
+      "create_rule": null,
+      "update_rule": "id = @request.auth.id",
+      "delete_rule": "id = @request.auth.id"
+    },
+    {
+      "name": "authors",
+      "type": "view",
+      "fields": [
+        {
+          "name": "name",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "view_query": "SELECT id, name FROM vb_users",
+      "list_rule": "",
+      "view_rule": null,
+      "create_rule": "",
+      "update_rule": "",
+      "delete_rule": ""
+    },
+    {
+      "name": "posts",
+      "type": "base",
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "required": true,
+          "options": {
+            "max": 120,
+            "searchable": true
+          }
+        },
+        {
+          "name": "body",
+          "type": "text",
+          "required": true,
+          "options": {
+            "max": 20000,
+            "searchable": true
+          }
+        },
+        {
+          "name": "cover",
+          "type": "file",
+          "options": {
+            "maxSize": 5242880,
+            "mimeTypes": ["image/jpeg", "image/png", "image/webp", "image/gif"],
+            "thumbs": ["480x270_cover", "1200x630_cover"]
+          }
+        },
+        {
+          "name": "published",
+          "type": "bool"
+        },
+        {
+          "name": "author",
+          "type": "relation",
+          "collection": "authors",
+          "required": true
+        }
+      ],
+      "list_rule": "published = true || author = @request.auth.id",
+      "view_rule": "published = true || author = @request.auth.id",
+      "create_rule": "@request.auth.id != \"\" && @request.body.author = @request.auth.id",
+      "update_rule": "author = @request.auth.id",
+      "delete_rule": "author = @request.auth.id"
+    },
+    {
+      "name": "comments",
+      "type": "base",
+      "fields": [
+        {
+          "name": "post",
+          "type": "relation",
+          "collection": "posts",
+          "required": true,
+          "options": {
+            "cascade": "cascade"
+          }
+        },
+        {
+          "name": "author",
+          "type": "relation",
+          "collection": "authors",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "text",
+          "required": true,
+          "options": {
+            "max": 2000
+          }
+        }
+      ],
+      "list_rule": null,
+      "view_rule": null,
+      "create_rule": "@request.auth.id != \"\" && @request.body.author = @request.auth.id",
+      "update_rule": "",
+      "delete_rule": "author = @request.auth.id"
+    },
+    {
+      "name": "site",
+      "type": "singleton",
+      "fields": [
+        {
+          "name": "title",
+          "type": "text",
+          "options": {
+            "max": 80
+          }
+        },
+        {
+          "name": "tagline",
+          "type": "text",
+          "options": {
+            "max": 160
+          }
+        }
+      ],
+      "list_rule": "",
+      "view_rule": null,
+      "create_rule": "",
+      "update_rule": "",
+      "delete_rule": ""
+    }
+  ]
+}

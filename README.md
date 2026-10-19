@@ -7,9 +7,9 @@ its own README, a `schema.json` you apply to your Vaultbase, and nothing else to
 | Example | Shows |
 |---|---|
 | [todo](./todo) | Sign-up and sign-in, rules that keep each user's data private, realtime sync across tabs, a typed client, batch deletes |
+| [blog](./blog) | Relations and `expand`, a view collection for public author profiles, cover uploads with thumbnails, full-text search, a settings singleton, drafts, live comments |
 
-More are on the way: a blog with relations, file uploads, search and a settings singleton;
-and a live chat.
+A live chat is on the way.
 
 ## Running an example
 
