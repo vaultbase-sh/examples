@@ -5,7 +5,7 @@
     "": {
       "name": "vaultbase-example-blog",
       "dependencies": {
-        "@vaultbase/sdk": "^0.7.2",
+        "@vaultbase/sdk": "^0.7.3",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
       },
@@ -187,7 +187,7 @@
 
     "@types/react-dom": ["@types/react-dom@19.3.0", "", { "peerDependencies": { "@types/react": "^19.3.0" } }, "sha512-ZI7bU42mZXXKHn/qNLEw2IrbiINU7X5+vfgdixBHkCNpYWXjKgfQ/P+uyGb5CjOLB9UcnTeg3rylQtV2hym44Q=="],
 
-    "@vaultbase/sdk": ["@vaultbase/sdk@0.7.2", "", { "peerDependencies": { "react": ">=18" }, "optionalPeers": ["react"], "bin": { "vb-flags": "dist/codegen/flags-bin.js", "vb-types": "dist/codegen/bin.js", "vb-migrate": "dist/migrate/bin.js" } }, "sha512-mXrg5O+EL5TD+GO2aPpjNTwv/o6WQVP8shDySBJe2jkksdY1dmzl7EvahSlIe+alHavTj851NbKB2AmRuvod9A=="],
+    "@vaultbase/sdk": ["@vaultbase/sdk@0.7.3", "", { "peerDependencies": { "react": ">=18" }, "optionalPeers": ["react"], "bin": { "vb-flags": "dist/codegen/flags-bin.js", "vb-types": "dist/codegen/bin.js", "vb-migrate": "dist/migrate/bin.js" } }, "sha512-KA3dUkDF2qJYZRWxE2U5cJnDYELS7FhcourD72AhbF/ErgMKGxH+oaUHJ/WK8nQmZkTIHzJF4pj3FpiBgIxXtA=="],
 
     "@vitejs/plugin-react": ["@vitejs/plugin-react@4.7.0", "", { "dependencies": { "@babel/core": "^7.28.0", "@babel/plugin-transform-react-jsx-self": "^7.27.1", "@babel/plugin-transform-react-jsx-source": "^7.27.1", "@rolldown/pluginutils": "1.0.0-beta.27", "@types/babel__core": "^7.20.5", "react-refresh": "^0.17.0" }, "peerDependencies": { "vite": "^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0" } }, "sha512-gUu9hwfWvvEDBBmgtAowQCojwZmJ5mcLn3aufeCsitijs3+f2NsrPtlAWIR6OPiqljl96GVCUbLe0HyqIpVaoA=="],
 
