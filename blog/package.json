@@ -12,7 +12,7 @@
     "types": "vb-types --schema=./schema.json --out=./src/lib/vaultbase-schema.gen.ts"
   },
   "dependencies": {
-    "@vaultbase/sdk": "^0.7.1",
+    "@vaultbase/sdk": "^0.7.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

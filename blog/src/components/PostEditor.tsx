@@ -59,9 +59,8 @@ function Form({ user, post }: { user: User; post?: Post }) {
       if (!saved) saved = created.current = await vb.collection("posts").create({ ...fields, author: user.id });
       let coverField: { cover?: string | null } = {};
       if (cover) {
-        // One file in, one file's details out (`multiple` fields get an array).
         const meta = await vb.files.upload("posts", saved.id, "cover", cover);
-        coverField = { cover: Array.isArray(meta) ? meta[0]!.filename : meta.filename };
+        coverField = { cover: meta.filename };
       } else if (cover === null) {
         // The old image is deleted by the server's hourly sweep of files no
         // record points at any more.
